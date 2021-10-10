@@ -26,5 +26,5 @@ The API can also be tested using [Thunder Client](https://www.thunderclient.io/)
     
     
 
-# LICENSE
+## LICENSE
 The MIT License - Copyright (c) 2021 Cla-petra Omaku
