@@ -3,7 +3,6 @@ import json
 import numpy as np
 import pandas as pd
 import pickle
-import requests
 
 
 # DEFINING PATH TO THE SAVED MODEL'S .pkl FILE
