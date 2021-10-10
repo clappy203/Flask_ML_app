@@ -42,7 +42,3 @@ def predict() -> str:
         return json.dumps({"error": error}), 400
     except Exception as error:
         return json.dumps({"error": error}), 400
-
-
-if __name__ == "__main__":
-    app.run()
