@@ -4,7 +4,7 @@
 This is a simple API that predicts house prices in Boston based on the inputs given in the post request.
 
 ## **Getting Started**
-Using this API is very simple. The API can be found on [Petra's API](https://e2eml-database.herokuapp.com/)and has just one useful endpoint: [predict](https://e2eml-database.herokuapp.com/predict)
+Using this API is very simple. The API can be found on [Petra's API](https://e2eml-database.herokuapp.com/) and has just one useful endpoint: [predict](https://e2eml-database.herokuapp.com/predict)
 
 The predict endpoint takes only POST requests and request made to the endpoint should come with inputs as part of the request data.
 
