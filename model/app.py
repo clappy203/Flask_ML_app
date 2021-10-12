@@ -15,7 +15,9 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def welcome_app():
-    return json.dumps({"message": "Welcome to model prediction app"}), 200
+    return json.dumps({"""Welcome to Boston house price prediction API. This API has only one useful endpoint \n
+                        Predict House prices via the endpoint using a POST request \n
+                        Inputs should be a list of 13 numbers. For more info, visit https://github.com/clappy203/Flask_ML_app"""}), 200
 
 
 def __process_input(request_data: str) -> np.array:
