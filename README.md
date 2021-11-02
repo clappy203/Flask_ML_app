@@ -15,8 +15,9 @@ The inputs should be a list containing 13 numbers. e.g
 
     resp = requests.post("https://e2eml-database.herokuapp.com/predict", 
                        data=json.dumps({"inputs":
-      [[3.6781, 1, 18.1, 5, 0.74 , 5.935, 7.9, 1.8206,24, 666, 20.2,  68.9, 34.02]]
-    }))
+             {"CRIM": [3.6781], "ZN": [1], "INDUS": [18.1], "CHAS":[5], "NOX": [0.74] , "RM": [5.935],
+              "AGE": [7.9], "DIS": [1.8206], "RAD": [24], "TAX": [666], "PTRATIO": [20.2], "B": [68.9], "LSTAT": [34.02]}
+              }))
     print(resp.text)
     
 The API can also be tested using [Thunder Client](https://www.thunderclient.io/)
