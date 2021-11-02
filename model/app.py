@@ -3,30 +3,19 @@ import json
 import numpy as np
 import pandas as pd
 import pickle
+from .validator import process_input
 
 
-# DEFINING PATH TO THE SAVED MODEL'S .pkl FILE
-SAVED_MODEL_PATH = "clf.pkl"
-
-# LOADING THE CLASSIFIER FROM FILE
-classifier = pickle.load(open(SAVED_MODEL_PATH, "rb"))
+# TO LOAD MODEL FROM FILE
+with open("model/clf.pkl", "rb") as model_file:
+    classifier = pickle.load(model_file)
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=['GET'])
 def welcome_app():
-    return json.dumps({"""Welcome to Boston house price prediction API. This API has only one useful endpoint \n
-                        Predict House prices via the endpoint using a POST request \n
-                        Inputs should be a list of 13 numbers. For more info, visit https://github.com/clappy203/Flask_ML_app"""}), 200
-
-
-def __process_input(request_data: str) -> np.array:
-    '''
-    Creates a processing function to transform inputs to expected outcome
-    '''
-    parsed_body = np.asarray(json.loads(request_data)["inputs"])
-    assert len(parsed_body.shape) == 2, "'inputs' must be a 2-d array"
-    return parsed_body
+    return ('Welcome to Boston house price prediction API'), 200
 
 
 @app.route("/predict", methods=["POST"])
@@ -35,11 +24,17 @@ def predict() -> str:
       predicts the model in created route 
     '''
     try:
-        input_params = __process_input(request.data)
+        input_params = process_input(request.data)
+        print(input_params)
         predictions = classifier.predict(input_params)
+        
 
-        return json.dumps({"model's predictions": predictions.tolist()})
+        return json.dumps({"prediction": predictions.tolist()})    
     except (KeyError, json.JSONDecodeError, AssertionError) as error:
-        return json.dumps({"error": error}), 400
+        return json.dumps({"error": str(error)}), 400
     except Exception as error:
-        return json.dumps({"error": error}), 400
+        return json.dumps({"error": str(error)}), 500
+
+
+if __name__ == "__main__":
+    app.run()
