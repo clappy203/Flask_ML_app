@@ -21,8 +21,11 @@ The inputs should be a list containing 13 numbers. e.g
     
 The API can also be tested using [Thunder Client](https://www.thunderclient.io/)
 
-![Thunderclient](https://user-images.githubusercontent.com/63512506/136703546-295fb3e6-3f14-4055-85d6-635bf3dfc61a.png)
-
+{
+  "prediction": [
+    20.979214650285158
+  ]
+}
     
     
 
